@@ -2,7 +2,7 @@
 %  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
 
 %=================================================================
-\documentclass[information,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
+\documentclass[geosciences,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
 
 %=================================================================
 
@@ -37,14 +37,13 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{Mapping Desiccation of the Lake Chad Using Maximum Likelihood Discriminant Analysis Classifier of GRASS GIS}
+\Title{Digital Image Processing by GRASS GIS for Mapping Variations in the Wetlands of the Lake Chad, Central Africa}
 
 % MDPI internal command: Title for citation in the left column
-\TitleCitation{Mapping Desiccation of the Lake Chad Using Maximum Likelihood Discriminant Analysis Classifier of GRASS GIS}
+\TitleCitation{Digital Image Processing by GRASS GIS for Mapping Variations in the Wetlands of the Lake Chad, Central Africa}
 
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
-\newcommand{\orcidauthorB}{0000-0002-6461-1551} % Olivier Add \orcidB{} behind the author's name
 
 % Authors, for the paper (add full first names)
 \Author{Polina Lemenkova $^{1}$*\orcidA{}}
@@ -70,10 +69,10 @@ $^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École polytechn
 %\firstnote{Current address: Affiliation 3.} 
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-\abstract{\textcolor{red}{\lipsum[1-1]}}
+\abstract{Lake Chad situated in the semi-arid region of African Sahel plays a vital role in hydrogeological balance of regional ecosystems, presents an essential water source for millions of people living around its shorelines, and provides a habitat for wildlife species including rare and migrating waterbirds. However, the lake has shrunk significantly since the 1960s, and continued to reduce in size and extent during recent decades. Trends in drying and shrinking of wetlands in Lake Chad area are caused by diverse environmental factors and changed climate patterns. The desiccation of the lake is threatening both people's wellbeing and environmental sustainability. This study focused on identification of changes in the Chad Lake water surface areas, wetland extend and associated land cover types. The methods include the use of the GRASS GIS 'i.maxlik' and 'i.cluster' modules for remote sensing data classification using three multispectral Landsat 8-9 OLI/TIRS images. The maximum likelihood discriminant analysis classifier was applied for image processing and analysis. Three satellite images on 2013, 2017 and 2022 were processed to visualise changes in the land cover types which reflect variations in water balance, wetland area and extent around the Lake Chad over the recent decade. The results demonstrate that scripting tools of the GRASS GIS provide an efficient method of digital image processing for monitoring land cover changes in endorheic lakes of Central Africa. GRASS GIS methods shown by this study provide an opportunity to better integrate Earth observation data in environmental monitoring by allowing automation of the cartographic workflow through scripts.}
 
 % Keywords
-\keyword{Central Africa; GRASS GIS; image processing; remote sensing; image classification; script; visualization; modelling; geoinformation; cartography} 
+\keyword{Sahel, Africa; GRASS GIS; image processing; remote sensing; image classification; script; visualization; modelling; geoinformation; cartography} 
 
 % The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
 \PACS{91.10.Da; 91.10.Jf; 91.10.Sp; 91.10.Xa; 96.25.Vt; 91.10.Fc; 95.40.+s; 95.75.Qr; 95.75.Rs; 42.68.Wt}
@@ -85,6 +84,8 @@ $^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École polytechn
 
 \section{Introduction}
 Many environmental phenomena which occur in landscapes, geological and ecological structures present heterogeneous properties which vary in space and time at various scales. Various approaches of modelling, visualisation and mapping these structure are developed with aim at describing and analysing their origin, trends and nature. The principal approach of using the remote sensing data consists in classification of the satellite images using the spectral difference in the pixels on the images that represent diverse objects on the Earth's surface visible from space. Such fundamental properties of the remotely sensed data enables to classify the satellite images into various classes of land cover types. Comparison of several images captured on the same area for various time periods enables to visualise and analyse the dynamics in land cover types and landscape changes visible from the space borne Earth Observation data such as Landsat Operational Land Imager Thermal Infrared Sensor (Landsat OLI/TIRS) images.
+
+% \textcolor{red}{\lipsum[1-1]
 
 In this paper, we address the problem of tracking changes in the landscapes of the Chad Lake using Earth Observation data. The major problem is related to the dryness of the lake and changes in its present shape due to the climate changes (droughts and decrease in precipitation) and human-induced activities. Monitoring Lake Chad has a long tradition, going back many years for application of hydrological surveying which enables to detect the actual level of the water horizons in the lake \cite{Tilho,LHuillier,Cabot,Tubiana,01440}. These early approaches to evaluation of the environmental changes in the Lake Chad region relied on estimation of the climatic data series \cite{Riou} and hydrological models that estimate the volume balance in the lake based on the field observations \cite{bader2011modele}. 
 
