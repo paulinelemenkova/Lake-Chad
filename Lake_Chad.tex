@@ -206,6 +206,8 @@ Regular intervals of the land cover classes in the Lake Chad region are represen
 
 The annotating of the land cover classes around Lake Chad based on recognised image features aimed at accurate object recognition during classification of the satellite images which required preliminary examination of the images and analysis of major landscape types according to FAO classification. Hence, the following 17 classes were selected and identified, according to FAO: 1) gallery forest and riparian forests; 2) woodland; 3) swamp forest; 4) savannah (Sahelian short grass savannah and herbaceous savannah); 5) steppe; 6) agriculture and irrigated areas; 7) settlements and urban areas; 8) bare soil; 9) rocky land; 10) sandy areas; 11) water bodies; 12) wetlands and floodplain with aquatic plants. Image features and associate land cover classes were recognised in the images, identified and described as patches of land cover classes constituting the landscapes of the Lake Chad. 
 
+Pixels or objects with similar spectral characteristics on the images were allocated to the designated classes using the  algorithm of the a maximum-likelihood discriminant analysis classifier embedded in the GRASS GIS. Using this approach, the 'i.maxlik' module enabled to classify the three images and indicate specific land cover classes around the Lake Chad. The annotations of the objects as land cover classes included the recognition of the distribution of their extent, changes from 2013 to 2022, detected shrinkage in water areas and wetlands around the Lake Chad and partially overlapped classes in the savannah regions. The polygon structure on the landscape mosaic on the classified maps demonstrates the interspersed patches of the landscape segments  which are identified on the Landsat images from the 2013 to 2022 consequently. Likewise, changes in the annotated land cover classes on the images demonstrate the climate effects which resulted in the variations of the land cover classes used for identification of the environmental changes around Lake Chad. 
+
 \begin{figure}[H]
 \hspace{-32pt}\makebox[1.00\linewidth][r]{%
 	\begin{subfigure}[b]{.55\textwidth}
@@ -221,9 +223,37 @@ The annotating of the land cover classes around Lake Chad based on recognised im
 }\caption{The Landsat 8-9 OLI/TIRS image of the Lake Chad classified into 12 classes of land cover types: (\textbf{a}) 2013 map, (\textbf{b}) 2013 rejection probability values with pixel classification confidence levels.}\label{fig05}
 \end{figure}
 
-Pixels or objects with similar spectral characteristics on the images were allocated to the designated classes using the  algorithm of the a maximum-likelihood discriminant analysis classifier embedded in the GRASS GIS. Using this approach, the 'i.maxlik' module enabled to classify the three images and indicate specific land cover classes around the Lake Chad. The annotations of the objects as land cover classes included the recognition of the distribution of their extent, changes from 2013 to 2022, detected shrinkage in water areas and wetlands around the Lake Chad and partially overlapped classes in the savannah regions. The polygon structure on the landscape mosaic on the classified maps demonstrates the interspersed patches of the landscape segments  which are identified on the Landsat images from the 2013 to 2022 consequently. Likewise, changes in the annotated land cover classes on the images demonstrate the climate effects which resulted in the variations of the land cover classes used for identification of the environmental changes around Lake Chad. 
+\begin{figure}[H]
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+	%	\centering
+			\hspace{40pt}\includegraphics[width=7.5cm]{Fig_06a}
+		\caption{\centering{2017}}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+%		\centering
+			\hspace{40pt}\includegraphics[width=7.5cm]{Fig_06b}
+		\caption{\centering{2017}}
+	\end{subfigure}%
+}\caption{The Landsat 8-9 OLI/TIRS image of the Lake Chad classified into 12 classes of land cover types: (\textbf{a}) 2017 map, (\textbf{b}) 2017 rejection probability values with pixel classification confidence levels.}\label{fig06}
+\end{figure}
 
 The comparison of the land cover associations over years detected on the multispectral images and their changes with time on the original images and classified maps enabled to evaluate the results. Although some land cover classes experienced shrinkage or changes in contours, their inner structure and topology remained identical with regard to neighbouring classes, for instance, with the disposition of savannah, sandy areas in the Sahara desert and wetlands around the Lake Chad. Since images were obtained with 4-5 year of time gap, such features were matched to find all possible cases of land cover changes to complete the map of the land cover classes around Lake Chad. Since all the Landsat images were collected in late November - early December period, the phenological cycles of vegetation represented of the images did not affect the identification of the vegetation patterns since extracting the information on land cover classes was possible in comparative manner with regard to period of plant growth in Chad region (late November-early December). 
+
+\begin{figure}[H]
+\hspace{-32pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+	%	\centering
+			\hspace{40pt}\includegraphics[width=7.5cm]{Fig_07a}
+		\caption{\centering{2022}}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+%		\centering
+			\hspace{40pt}\includegraphics[width=7.5cm]{Fig_07b}
+		\caption{\centering{2022}}
+	\end{subfigure}%
+}\caption{The Landsat 8-9 OLI/TIRS image of the Lake Chad classified into 12 classes of land cover types: (\textbf{a}) 2022 map, (\textbf{b}) 2022 rejection probability values with pixel classification confidence levels.}\label{fig07}
+\end{figure}
 
 Using the procedure described above, the land cover classes were created with aim at identifying the target patches of each landscape type to detect changes from 2013 to 2022. This mosaic of land cover types represents the extent of the diverse landscape types around the Lake Chad in order to accurately detect landscape changes cased by environmental and climate effects. The changes were detected between the 2013, 2018 and 2022, and used for evaluating variations in land cover types around the Lake Chad region. The repetitive vegetation patterns and objects identified as land cover classes were recognised and annotated on the resulting maps which presented three maps showing landscape changes in the land cover classes around the Lake Chad. The annotated objects for patches of land cover classes identified on the images forming the land cover classes around lake Chad are presented as three respecting maps in Figures \ref{fig05}, \ref{fig06} and \ref{fig07}. 
 
