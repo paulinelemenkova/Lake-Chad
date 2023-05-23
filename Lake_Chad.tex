@@ -17,7 +17,7 @@
 \pubyear{2023}
 \copyrightyear{2023}
 %\externaleditor{Academic Editor: Firstname Lastname}
-\datereceived{31 May 2023} 
+\datereceived{23 May 2023} 
 \daterevised{} 
 \dateaccepted{} 
 \datepublished{} 
@@ -126,9 +126,9 @@ The unprecedented hydrological drought in the mid 20th century in sub-Saharan Af
 
 \subsection{Problem Statement}
 
-Accurate cartographic visualization has been a challenge in environmental science with a focus on Africa, where data are often scarce or vary significantly by sources, resolution, and spatial extent. The wide range of geographic data poses a great challenge for mapping approaches due to their different functionality \cite{STEINIGER2013136}. Therefore, selecting suitable GIS program is important for environmental mapping of Africa, since the functionality of the software may affect data analysis and limit cartographic techniques. A comprehensive survey on available free GIS \cite{LEIDIG201549,CHEN2010253}, recent trends in the development of cartography \cite{WangWu} and new directions and perspectives in GIS \cite{Lietal2022}, while this section only covers the most relevant GIS applications for environmental mapping.
+Accurate cartographic visualization has been a challenge in environmental sciences. It is even more essential for African studies where data are often scarce or vary significantly by sources, resolution and spatial extent. The wide range of the geographic data poses a great challenge for mapping approaches due to their different functionality \cite{STEINIGER2013136}. Therefore, selecting a suitable GIS program is important for environmental mapping of Chad Lake, since the functionality of the software may affect data analysis and limit cartographic techniques. A comprehensive survey is available on the existing free GIS \cite{LEIDIG201549,CHEN2010253}, recent trends in the development of cartography \cite{WangWu} and new directions and perspectives in GIS \cite{Lietal2022}, while this section only covers the most relevant GIS applications for environmental mapping.
 
-The efficient solutions for satellite image processing are presented by ERDAS Imagine with applications of environmental monitoring \cite{FALAKI2020363} with many existing cases due to the functionality and availability of diverse modules aimed at raster data processing. The Global Mapper GIS, developed by the USGS, includes a variety of tools including LiDAR handling, 3D rendering, watershed delineation to process geological and environmental data. Probably the most-well known and widely distributed commercial GIS is the ArcGIS which process well both vector and raster data \cite{AlDjazouli}, supports satellite images processing \cite{SESNIE20082145}, enables hydrological catchment and basin analysis \cite{Nkiaka}, terrain DEM modelling for geospatial data analysis \cite{Kay}, spatial data visualization \cite{GHIENNE200281,Buenzli,Gachet} and many other functions. 
+The efficient solutions for satellite image processing are presented by Earth Resources Data Analysis System (ERDAS) Imagine with applications of environmental monitoring \cite{FALAKI2020363} with many existing cases due to the functionality and availability of diverse modules aimed at raster data processing. The Global Mapper GIS, developed by the United States Geological Survey (USGS), includes a variety of tools including the Light Detection and Ranging (LiDAR) handling, 3D rendering, watershed delineation to process geological and environmental data. Probably the most-well known and widely distributed commercial GIS is the ArcGIS which process well both vector and raster data \cite{AlDjazouli}, supports satellite images processing \cite{SESNIE20082145}, enables hydrological catchment and basin analysis \cite{Nkiaka}, terrain DEM modelling for geospatial data analysis \cite{Kay}, spatial data visualization \cite{GHIENNE200281,Buenzli,Gachet} and many other functions. 
 
 More examples of commercial GIS software include Geomedia GIS, developed by the Hexagon Geospatial for cadastral mapping, landscape and terrain analysis, and geomorphometric modelling. MapInfo GIS provides tools for environmental analysis, mapping and cartographic visualization. These and others proprietary GIS are examples of the commercial software on the geospatial market. However, such proprietary programs are restricted to the license availability which restricts their use to large business enterprises and commercial organisations with market license. This becomes inefficient for many research cases, such as educational workspace, private-run business or mapping for personal research needs. In such cases, the use of open source GIS becomes essential for effective geographic data processing \cite{Auda}. 
 
@@ -258,7 +258,7 @@ In such way, it detects lans cover classes for each image for a short-term seque
 i.maxlik group=L8_2013 subgroup=res_30m signaturefile=cluster_L8_2013 output=L8_2013_cluster_classes reject=L8_2013_cluster_reject
 \end{lstlisting}
 
-Regular intervals of the land cover classes in the Lake Chad region are represented in Figures \ref{fig05}, \ref{fig06} and \ref{fig07} showing landscape patterns for 2013, 2018 and 2022, respectively. Identifying of vegetation patterns and wetlands around the flooded area of the lake was done for target years using the detected land cover classes interpreted by the FAO classification available for Lake Chad region. Annotating the land cover classes was performed using signature file by identifying the breaks of intervals between the target classes using the difference in the spectral reflectance values of the pixels (cells on the Landsat image). Mapping the land cover types was performed using the code in Listing \ref{lst06}:
+Regular intervals of the land cover classes in the Lake Chad region are represented in Figures \ref{fig05}, \ref{fig06} and \ref{fig07} showing landscape patterns for 2013, 2018 and 2022, respectively. Identifying of vegetation patterns and wetlands around the flooded area of the lake was done for target years using the detected land cover classes interpreted by the Food and Agriculture Organization (FAO) classification available for Lake Chad region. Annotating the land cover classes was performed using signature file by identifying the breaks of intervals between the target classes using the difference in the spectral reflectance values of the pixels (cells on the Landsat image). Mapping the land cover types was performed using the code in Listing \ref{lst06}:
 
 \begin{lstlisting}[language=bash,caption=GRASS GIS code for mapping land cover classes of the Landsat  images,style=mystyle,label={lst06}]
 d.mon wx0
@@ -379,15 +379,22 @@ The following abbreviations are used in this manuscript:\\
 
 \noindent 
 \begin{tabular}{@{}ll}
+CPT & Colour Palette Table \\
+DEM & Digital Elevation Model \\
+ERDAS Imagine & Earth Resources Data Analysis System Imagine \\
+FAO & Food and Agriculture Organization \\
+GDAL & Geospatial Data Abstraction Library \\
 GEBCO & General Bathymetric Chart of the Oceans \\
 GMT & Generic Mapping Tools \\
 GIS & Geographic Information System \\
 GRASS GIS & Geographic Resources Analysis Support System GIS \\
 Landsat OLI/TIRS & Landsat Operational Land Imager Thermal Infrared Sensor\\
+LiDAR & Light Detection and Ranging \\
 NIR & Near Infrared \\
 RGB & Red Green Blue\\
 SRTM & Shuttle Radar Topography Mission \\
 SWIR & Shortwave Infrared \\
+USGS & United States Geological Survey \\
 UTM & Universal Transverse Mercator \\
 WGS84 & World Geodetic System 1984
 \end{tabular}
