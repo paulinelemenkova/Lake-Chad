@@ -177,15 +177,15 @@ The associations of geologic setting with land cover types are linked through so
 
 The hydrology of Lake Chad plays a key role in the environmental sustainability of Africa through regulating energy and carbon cycles, participating global climate balance and as a key regional water sources \cite{Papa,Tranvik}. Moreover, Lake Chad plays a key social-economic role in the region through support of agriculture activities and fishery, and as a water source to over 30 M people in the surrounding countries: Chad, Cameroon, Niger, and Nigeria \cite{VAQUERO2021100935}. As a transboundary water source, Lake Chad maintenance the livelihoods for existence of local population such as fishing and farming  \cite{Sarch,resources6030041,Baroin}. Besides, it provides diverse eco-system goods and services, and natural resources such as firewood or livestock-rearing \cite{RIEBE2021104486}. This highlights the importance of measures on the environmental conservation of the lake and sustainable development of its resources. As a result, the agricultural activities of the Lake Chad region are concentrated around the lake and the two river systems which play major role in the agricultural economics of the region. 
 
-Hence, the human-induced triggers contributing to the shrinking of the Lake Chad include the unsustainable agriculture with groundwaters used for irrigation \cite{Lemoalle}, the increasing demand for freshwater from the Chad Lake by local population \cite{Baroin} and the drilling of boreholes related to hydrogeologic activities on the development of large-scale irrigation system \cite{BIRKETT2000218}. The intensive modern irrigation methods and farming systems in agriculture practising include the use of fertilizers and farm machinery for maize and millet production that lead to land degradation \cite{NILSSON201615}. Further, the analysis of the vegetation patterns and surface water levels in Lake Chad demonstrated links of land cover types with rainfall fluctuations during wet and dry periods \cite{balme2006annees}, as well as the effects from seasonally contrasted climate \cite{GBETKOM2023159302}
+The human-induced triggers contributing to the shrinking of the Lake Chad include the unsustainable agriculture with groundwaters intensively used for irrigation \cite{Lemoalle}, increasing demand for freshwater from the lake by population \cite{Baroin} and drilling of boreholes related to hydrogeologic activities aimed at constructing large-scale irrigation systems \cite{BIRKETT2000218}. The intensive modern irrigation and farming methods in agriculture practising include fertilizers and farm machinery for maize and millet production that lead to land degradation \cite{NILSSON201615}. Further, the analysis of the vegetation patterns and surface water levels in Lake Chad demonstrated links of land cover types with rainfall fluctuations during wet and dry periods \cite{balme2006annees}, as well as the effects from seasonally contrasted climate \cite{GBETKOM2023159302}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Materials and Methods}
 
-To perform image processing for Landsat 8-9 OLI/TIRS imagery, we apply the Geographic Resources Analysis Support System (GRASS) Geographic Information System (GIS) introduced by \cite{Neteler2004} using the major approach of 'i.maxlik' for unsupervised classification \cite{Neteler2008}. The embedded algorithms discriminating the pixels account for individual identities of the land cover types and objects represented on the satellite images using the information on their spectral reflectances. The map of the study are has been prepared using Generic Mapping Tools (GMT) version 6.1.1 \cite{Wessel} following the existing techniques \cite{Paul,Lemenkova202228}, and the geologic maps were plotted using QGIS version 3.22.
-
 %----------- subsection ----------->
 \subsection{Data}
+
+The data used in this study include three satellite images Landsat 8 OLI/TIRS on 22 November 2013, 17 November 2017 and 09 December 2022, Figure \ref{fig04}. 
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
@@ -205,11 +205,15 @@ To perform image processing for Landsat 8-9 OLI/TIRS imagery, we apply the Geogr
 		\caption{2022}
 	\end{subfigure}%
 }
-\caption{Landsat 8 OLI/TIRS image of the Lake Chad, in natural RGB colours: (\textbf{a}) 22.Nov.2013, (\textbf{b}) 17.Nov.2017, (\textbf{c}) 09.12.2022}\label{fig04}
+\caption{Landsat 8 OLI/TIRS image of the Lake Chad, in natural RGB colours: (\textbf{a}) 22 November 2013, (\textbf{b}) 17 November 2017, (\textbf{c}) 09 December 2022.}\label{fig04}
 \end{figure}
+
+The images covering target region of Chad Lake were downloaded from the public USGS EarthExplorer repository on remote sensing data (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}).
 
 %----------- subsection ----------->
 \subsection{Methods}
+
+To perform image processing for Landsat 8-9 OLI/TIRS imagery, we apply the Geographic Resources Analysis Support System (GRASS) Geographic Information System (GIS) introduced by \cite{Neteler2004} using the major approach of 'i.maxlik' for unsupervised classification \cite{Neteler2008}. The embedded algorithms discriminating the pixels account for individual identities of the land cover types and objects represented on the satellite images using the information on their spectral reflectances. The map of the study are has been prepared using Generic Mapping Tools (GMT) version 6.1.1 \cite{Wessel} following the existing techniques \cite{Paul,Lemenkova202228}, and the geologic maps were plotted using QGIS version 3.22.
 
 Programming methods and scripts present a recent trend used in geospatial data processing that emerged as a powerful alternatives to the traditional GIS software \cite{8882177,technologies11020046,7248095}. Libraries are tuned as a collection of codes specially designed to optimise specific tasks such as computing vegetation indices, projecting the data, and then concatenate the code into longer scripts which perform the complete task of mapping. Such a partition of the workflow enables the machine to perform selected tasks in satellite image processing, and thus optimises computer memory and resources. In contrast to many conventional software, the GRASS GIS supports scripts for optimization of the data processing and cartographic workflow.
 
