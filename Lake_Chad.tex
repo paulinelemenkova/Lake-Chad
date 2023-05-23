@@ -216,7 +216,7 @@ Among the diverse existing methods and software that can be used for satellite i
 
 Motivated by the advantages of scripts and libraries in image processing and powerful technical functionality of the GRASS GIS software in remote sensing applications for processing open spatial data. The increase of the open spatial data arises a question of the effective tools for their processing. The most well-know tools for cartographic visualization and spatial analysis is GIS. While the range of GIS was limited by restricted functionality, modern technologies such as scripts GRASS GIS enable a wide range of techniques. Decades ago, principally new paradigms for cartographic data processing and mapping were proposed through scripting. 
 
-The main idea of cartographic scripts is to automate and simplify mapping workflow to increase repeatability of workflow and precision of mapping. Such methods principally differ from the traditional GIS since scripts rely on a straightforward concept: every step in a mapping process is fully controlled by the lines of code, written according to the language syntax. In this way, hidden obstacles and bugs, often in traditional GIS, are avoided, and the complete procedure of mapping is improved. Compared to the existing GIS methods, scripting approach of the GRASS GIS can be considered as an alternative method in terms of cartographic visualization. 
+The main idea of cartographic scripts is to automate and simplify mapping workflow, to increase repeatability of algorithms and precision of mapping. Such methods principally differ from the traditional GIS as scripts rely on a straightforward concept: every step in a mapping process is fully controlled by the lines of code, written according to the language syntax. In this way, hidden obstacles and bugs, often in traditional GIS, are avoided, and the complete procedure of mapping is improved. Compared to the existing GIS methods, scripting approach of the GRASS GIS can be considered as an advanced alternative method of cartographic visualization. 
 
 \subsection{Image capture and import}
 
@@ -251,15 +251,28 @@ Two major approaches in processing satellite images include the unsupervised and
 
 The processing workflow for each image included clustering of images on each scene extracted from the original raster file, detection of clusters with centroids, assignment of pixels to these clusters based on individual spectral reflectance values and indicating their representative values by creating signature file. Technically the procedure was performed using the  code in Listing \ref{lst04}:
 
- \begin{lstlisting}[language=bash,caption=GRASS GIS code for clustering the Landsat 8 OLI/TIRS image by k-means using 'i.cluster' module),style=mystyle,label={lst04}]
-i.cluster group=L8_2013 subgroup=res_30m \
-  signaturefile=cluster_L8_2013 \
-  classes=12 reportfile=rep_clust_L8_2013.txt --overwrite
+ \begin{lstlisting}[language=bash,caption=GRASS GIS code for clustering the Landsat 8 OLI/TIRS image by k-means using 'i.cluster' module,style=mystyle,label={lst04}]
+i.cluster group=L8_2013 subgroup=res_30m signaturefile=cluster_L8_2013 classes=12 reportfile=rep_clust_L8_2013.txt --overwrite
  \end{lstlisting}
  
-In such way, it detects lans cover classes for each image for a short-term sequence of images on 2013, 2018 and 2022. The land cover classes were identified dividing the image into repetitive  segments of vegetation patterns automatically using the maximum likelihood approach of the GRASS GIS. The 'i.maxlik' module of the GRASS GIS was used for automatic generation of land cover classes based on the minimal distance search algorithm that assigns pixels to the classes based on the distance between pixel's value and centroid of the tested class. In this procedure, it uses the signature file generated automatically by the 'i.cluster' module with indicated number of target classes. 
+In such way, it detects lans cover classes for each image for a short-term sequence of images on 2013, 2018 and 2022. The land cover classes were identified dividing the image into repetitive  segments of vegetation patterns automatically using the maximum likelihood approach of the GRASS GIS. The 'i.maxlik' module of the GRASS GIS was used for automatic generation of land cover classes based on the minimal distance search algorithm. This algorithm assigns pixels to the classes based on the distance between pixel's value and centroid of the tested class. In this procedure, it uses the signature file generated automatically by the 'i.cluster' module with indicated number of target classes. In GRASS GIS, the image classification was performed using the code in Listing \ref{lst05}:
 
-Regular intervals of the land cover classes in the Lake Chad region are represented in Figures \ref{fig05}, \ref{fig06} and \ref{fig07} showing landscape patterns for 2013, 2018 and 2022, respectively. Identifying of vegetation patterns and wetlands around the flooded area of the lake was done for target years using the detected land cover classes interpreted by the FAO classification available for Lake Chad region. Annotating the land cover classes was performed using signature file by identifying the breaks of intervals between the target classes using the difference in the spectral reflectance values of the pixels (cells on the Landsat image). Similar classes (e.g., three types of savannah) were grouped based on the original resolution of the images (30 m) which enabled to identify vegetation patches with size larger that this size. In this way, the classes were grouped and located closely to the patches of landscapes with similar spectral reflectance values in the original Landsat images. The algorithm performed automatic clustering and classification of each image in less than 2 seconds and processed raster files for the years 2013, 2018 and 2022 using the described methods.
+ \begin{lstlisting}[language=bash,caption=GRASS GIS code for image classification of the Landsat 8 OLI/TIRS images by the maximum-likelihood discriminant analysis classifier using 'i.maxlik' module,style=mystyle,label={lst05}]
+i.maxlik group=L8_2013 subgroup=res_30m signaturefile=cluster_L8_2013 output=L8_2013_cluster_classes reject=L8_2013_cluster_reject
+\end{lstlisting}
+
+Regular intervals of the land cover classes in the Lake Chad region are represented in Figures \ref{fig05}, \ref{fig06} and \ref{fig07} showing landscape patterns for 2013, 2018 and 2022, respectively. Identifying of vegetation patterns and wetlands around the flooded area of the lake was done for target years using the detected land cover classes interpreted by the FAO classification available for Lake Chad region. Annotating the land cover classes was performed using signature file by identifying the breaks of intervals between the target classes using the difference in the spectral reflectance values of the pixels (cells on the Landsat image). Mapping the land cover types was performed using the code in Listing \ref{lst06}:
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for mapping land cover classes of the Landsat  images,style=mystyle,label={lst06}]
+d.mon wx0
+g.region raster=L8_2013_cluster_classes -p
+r.colors L8_2013_cluster_classes color=roygbiv -e
+d.rast L8_2013_cluster_classes
+d.legend raster=L8_2013_cluster_classes title="2013" title_fontsize=12 font="Helvetica" fontsize=10 bgcolor=white border_color=white
+d.out.file output=Chad_2013 format=jpg --overwrite
+\end{lstlisting}
+
+Similar classes (e.g., three types of savannah) were grouped based on the original resolution of the images (30 m) which enabled to identify vegetation patches with size larger that this size. In this way, the classes were grouped and located closely to the patches of landscapes with similar spectral reflectance values in the original Landsat images. The algorithm performed automatic clustering and classification of each image in less than 2 seconds and processed raster files for the years 2013, 2018 and 2022 using the described methods.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
