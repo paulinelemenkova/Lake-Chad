@@ -35,6 +35,39 @@
 \usepackage{tabularx}
 \usepackage{lipsum}
 
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepmagenta}{RGB}{195,12,214}
+\definecolor{deepgreen}{RGB}{29,122,30}
+\definecolor{mintgreen}{RGB}{192,249,192}
+\definecolor{codepurple}{RGB}{204, 0, 153}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{GainsboroPurple}{RGB}{247,176,247}
+\definecolor{LightSlateGrey}{RGB}{124,118,118}
+%    
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{LightSlateGrey},
+    keywordstyle=\color{deepgreen}\bfseries,
+    emphstyle=\color{deepred},
+    numberstyle=\tiny\color{deepmagenta},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
 %=================================================================
 % Full title of the paper (Capitalized)
 \Title{Digital Image Processing by GRASS GIS for Mapping Variations in the Wetlands of the Lake Chad, Central Africa}
@@ -87,7 +120,8 @@ $^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École polytechn
 \subsection{Background}
 Many environmental phenomena which occur in landscapes, agricultural and ecological structures present heterogeneous properties which vary in space and time at various scales \cite{Pengetal2020,Fahrig,WILSON2017218}. Various approaches of modelling, visualisation and mapping these structure are developed with aim at describing and analysing their origin, trends and nature. The principal approach of using the remote sensing data consists in classification of the satellite images using the spectral difference in the pixels on the images that represent diverse objects on the Earth's surface visible from space \cite{WEISS2020111402,Xieetal2008,ABDI2021108098}. Such fundamental properties of the remotely sensed data enables to classify the satellite images into various classes of land cover types. Comparison of several images captured on the same area for various time periods enables to visualise and analyse the dynamics in land cover types and landscape changes visible from the space borne Earth Observation data such as Landsat Operational Land Imager Thermal Infrared Sensor (Landsat OLI/TIRS) images.
 
-In this paper, we address the problem of tracking changes in the landscapes of the Chad Lake (Figure \ref{fig01}) using Earth Observation data and scripts of the GRASS GIS. The major problem is related to the dryness of the lake and changes in its present shape due to the climate changes (droughts and decrease in precipitation) and human-induced activities. Monitoring Lake Chad has a long tradition, going back many years for application of hydrological surveying which enables to detect the actual level of the water horizons in the lake \cite{Tilho,LHuillier,Cabot,Tubiana,01440}. These early approaches to evaluation of the environmental changes in the Lake Chad region relied on estimation of the climatic data series \cite{Riou} and hydrological models that estimate the volume balance in the lake based on the field observations \cite{bader2011modele}. 
+In this paper, we address the problem of tracking changes in the landscapes of the Chad Lake (Figure \ref{fig01}) using Earth Observation data and scripts of the GRASS GIS. Earth Observation data and geo-information enable to better understand wetland areas, support monitoring of the terrestrial water cycle and land cover changes in lakes \cite{Jones}.
+The major problem is related to the dryness of the lake and changes in its present shape due to the climate changes (droughts and decrease in precipitation) and human-induced activities. Monitoring Lake Chad has a long tradition, going back many years for application of hydrological surveying which enables to detect the actual level of the water horizons in the lake \cite{Tilho,LHuillier,Cabot,Tubiana,01440}. These early approaches to evaluation of the environmental changes in the Lake Chad region relied on estimation of the climatic data series \cite{Riou} and hydrological models that estimate the volume balance in the lake based on the field observations \cite{bader2011modele}. 
 
 \subsection{Problem Statement}
 
@@ -101,14 +135,14 @@ More examples of commercial GIS software include Geomedia GIS, developed by the 
 
 The existing examples of mapping Lake Chad include the use of ArcGIS \cite{Nzango}, ILWIS GIS \cite{Onamuti} or QGIS \cite{PhamDuc} for environmental monitoring. Other studies presents cases of satellite image processing for hydrological modelling \cite{rs14061511}, estimating shrinkage in the catchment area \cite{s18072082}, variations in the soil characteristics in Chad watershed  \cite{rs10060924}, or fluctuations in the Sahelian climate related to Chad Lake region \cite{su131910734}. The fieldwork-based approaches to environmental monitoring of Chad region  uses hydrological parameters to estimate the net water balance in lake using modelling \cite{MAHMOOD2019104043}. Such parameters include the tributary inflow, precipitation, evaporation, infiltration, and additional data on soil moisture deficit, soil imperviousness, or infiltration rate \cite{MAHMOOD2019122}. Such approaches, among others, partially address the issue of climate-environmental monitoring by simultaneously exploring multiple hydrological parameters. 
 
-However, existing methods handle only the relatively small-scale and restricted processes limited to the target hydrological variables and probabilistic modelling \cite{Guganesharajah} without their extend becoming converted to the indicators of land cover changes and visualised changes in landscapes. Besides, they often require careful hydrological parameters setting to converge and adjust to model and involve \emph{in-situ} sampling and data collection \cite{Robinson}. More advanced method of environmental monitoring includes the use of remote sensing data \cite{CRETAUX20061098,LEBLANC201187} and satellite images \cite{rs11212534,Coe,info14040249}. Using satellite images, it is possible to perform time series for analysis of lake extent and associated land cover changes. With this regards, the advanced software GRASS GIS achieves attention in environmental mapping owing to the variety of its functions that can be applied in satellite image analysis \cite{jmse11040871}. 
-
 \begin{figure}[H]
 \centering
 	\includegraphics[width=11.0 cm]{Fig_01.jpg}
 	\caption{Topographic map of Chad. Software: GMT. Data source: GEBCO. Map source: author.
 	\label{fig01}}
 \end{figure}
+
+However, existing methods handle only the relatively small-scale and restricted processes limited to the target hydrological variables and probabilistic modelling \cite{Guganesharajah} without their extend becoming converted to the indicators of land cover changes and visualised changes in landscapes. Besides, they often require careful hydrological parameters setting to converge and adjust to model and involve \emph{in-situ} sampling and data collection \cite{Robinson}. More advanced method of environmental monitoring includes the use of remote sensing data \cite{CRETAUX20061098,LEBLANC201187} and satellite images \cite{rs11212534,Coe,info14040249}. Using satellite images, it is possible to perform time series for analysis of lake extent and associated land cover changes. With this regards, the advanced software GRASS GIS achieves attention in environmental mapping owing to the variety of its functions that can be applied in satellite image analysis \cite{jmse11040871}. 
 
 As briefly reviewed above, the available GIS programs have limitations and may be efficient for selected operations, while restricted for automatic and complex spatial data analysis and visualization. This is mainly because these programs are designed for special needs of geographical data analysis, but perform poorly or none when programming scripts are required for large data processing. Another concern relates to the origin of data and materials, which may be captured from multiple sources, have diverse projections and resolution \cite{Fassoni,Bastola,atmos14020232}. The combination of these tools in one research for dividing research tasks is cumbersome and not always convenient, which raises up the question of the console-based program for spatial data analysis and mapping, which has a more flexibility in mapping process. This is achieved in GRASS GIS, owing to the embedded syntax of the programming language, used for mapping.
 
@@ -134,7 +168,7 @@ Western and eastern segment of the Congo Precambrian Belt form a southern border
 	\label{fig03}}
 \end{figure}
 
-The associations of geologic setting with land cover types are linked through soil types. Thus, in the flooded plain of Lake Chad region, the main mineral type is is smectite clays associated to kaolinite and illite \cite{JEANPIERRE2019176} which supports grounwater hydrology and supplies water level in the lake during periods of droughts.In contrast to the rich groundwater supply, the surficial inflow of the southern segment of the Lake Chad is supplied up to 80\% from only two rivers -- Chari and Logone that originate in  southern highlands of Cameroon and the Central African Republic \cite{Hutchinson}. The northern segment depends on the minor inflows from the Komadugu Yobe River originating in Nigeria, and the overflows from the southern basin \cite{Fougou}. Early Cretaceous clastic sediments are found in the West African Rift Subsystem of Chad \cite{GENIK1992169} which presents the extent of the East African Rift in the south-eastern region. A part of the Great Rift Valley developed during Pan African orogeny, the East African Rift System has geologic implications on tectonic and structural aspects of mineral resource distribution and groundwater level in Chad. 
+The associations of geologic setting with land cover types are linked through soil types. Thus, in the flooded plain of Lake Chad region, the main mineral type is is smectite clays associated to kaolinite and illite \cite{JEANPIERRE2019176} which supports grounwater hydrology and supplies water level in the lake during periods of droughts. In contrast to the rich groundwater supply, the surficial inflow of the southern segment of the Lake Chad is supplied up to 90\% from the Chari-Logone catchment \cite{earth2020020}. The Chari and Logone rivers originate in southern highlands of Cameroon and the Central African Republic \cite{Hutchinson}. The northern segment depends on the minor inflows from the Komadugu Yobe River originating in Nigeria, and the overflows from the southern basin \cite{Fougou}. Early Cretaceous clastic sediments are found in the West African Rift Subsystem of Chad \cite{GENIK1992169} which presents the extent of the East African Rift in the south-eastern region. A part of the Great Rift Valley developed during Pan African orogeny, the East African Rift System has geologic implications on tectonic and structural aspects of mineral resource distribution and groundwater level in Chad. 
 
 In the past, Lake Chad was among the largest lakes of Africa with the extent varying between $10,000$ and $25,000 km^2$ \cite{Daveau}. However, during the last 60 years since the 1960s, the lake experienced the dramatic drying by around 90\% with a surface area being shrunk from $25000 km^2$ in 1960 to ca. $1350 km^2$, as reported in many publications \cite{Owonikoko,Rudincova,MAHAMATNOUR2021100824}. Morespecifically, since 1960s, the lake shrank drastically from about $25,000 km^2$ to its current size of about $1300 km^2$ \cite{Zhaoetal2022}. The reasons for such significant changes include both natural and anthropogenic factors. Natural triggers for lake shrinkage consist of the complex interrelations of the hydro-climatic processes such as increased temperature, decreased precipitation and rainfall \cite{BUMA2016403,MAHAMATNOUR2021100824}. 
 
@@ -190,16 +224,40 @@ The images were captured from the original location in USGS EarthExplorer reposi
 
 Each image consisted of several tiles representing Landsat OLI/TIRS bands: multispectral visible bands, NIR, Panchromatic, Cirrus, two SWIR and two TIRS bands. Although the dimensions of the bands are identical, the resolution differs with 30 m for bands 1 to 7 and 9 (Cirrus), 15 m for panchromatic band, and 100 m for two TIRS bands. In this study, we only used the multi-spectral channels of the Landsat with resolution of 30 m. Therefore, one pixel on a image corresponds to the 30 meters on the Earth's surface in the original TIFF which determines the level of details of the vegetation patterns on the classification to this spatial dimension. The images were then read into the GRASS GIS environment using the 'r.import' modules. Each Landsat OLI/TIRS image contained 11 bands which were imported and processed individually using 'r.import' module. 
 
-Selecting the multi-spectral bands from the original image was based on the 'r.import' module which collects raster data and reads them into a GRASS raster mapset environmentl using embedded GDAL library and reprojects the raster files into cartographic parameters defined for a mapset. For instance, the band 7 was imported using the following code: $"r.import input=/Users/polinalemenkova/grassdata/Chad/LC08\_L2SP<...>\_B7 output=L8\_2013\_07 resample=bilinear extent=region resolution=region"$ (here for 2013), and repeated likewise for relevant Landsat bands for 2013, 2018 and 2022. Alternatively, raster files can be imported using the 'r.in.gdal' library of GDAL (see the scripts) and the images were stored in the working folder using location and mapset of the current project. Once the images were read in the GRASS GIS environment, several steps of the developed framework on image processing were implemented, as described below. 
+Selecting the multi-spectral bands from the original image was based on the 'r.import' module which collects raster data and reads them into a GRASS raster mapset environmentl using embedded GDAL library and reprojects the raster files into cartographic parameters defined for a mapset. For instance, Band 1 was imported using the code in Listing \ref{lst01}: 
 
-The metadata of the images were checked using relevant modules of the GRASS GIS. In particular, the techniques of image processing in GRASS GIS include the auxiliary functions of 'g.list rast' and 'r.info' acting on imported raster bands and showing the identified parameters of images as attributes and a given set of identifiers of technical specifications of the multispectral images: resolution, minimal and maximal values, coordinate system. After the image preprocessing, the  modules of the GRASS GIS were used for classification of the Landsat 8-9 OLI/TISR satellite images. This approach partitions the image using the embedded algorithm of discriminating the pixels on the images that represent various land cover types in target area using their spectral reflectances. We evaluated three images covering the region of the Lake Chad on the three years: 2013, 2017 and 2022. 
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for importing the Landsat 8 OLI/TIRS image on Chad (here: a case of the bands of Landsat image on November 2013),style=mystyle,label={lst01}]
+r.import input=/Users/polinalemenkova/grassdata/Chad/LC08_L2SP_185051_20131122_20200912_02_T1_SR_B1.TIF output=L8_2013_01 resample=bilinear extent=region resolution=region --overwrite
+\end{lstlisting}
+
+ (here for 2013), and repeated likewise for relevant Landsat bands for 2013, 2018 and 2022. Alternatively, raster files can be imported using the 'r.in.gdal' library of GDAL and the images were stored in the working folder using location and mapset of the current project using code in Listing \ref{lst02}:
+ 
+ \begin{lstlisting}[language=bash,caption=GRASS GIS code for importing Landsat images on Chad using GDAL,style=mystyle,label={lst02}]
+ r.in.gdal input=/Users/polinalemenkova/grassdata/Chad/LC08_L2SP_185051_20131122_20200912_02_T1_SR_B7.TIF output=L8_2014_07 --overwrite
+ \end{lstlisting}
+ 
+Once the images were read in the GRASS GIS environment, several steps of the developed framework on image processing were implemented, as described below. The metadata of the images were checked using relevant modules of the GRASS GIS. In particular, the techniques of image processing in GRASS GIS include the auxiliary functions of 'g.list rast' and 'r.info' acting on imported raster bands and showing the identified parameters of images as attributes and a given set of identifiers of technical specifications of the multispectral images: resolution, minimal and maximal values, coordinate system. After image preprocessing, the 'i.group' module was used for grouping the bands before the classification of the Landsat images using code in Listing \ref{lst03}:
+
+ \begin{lstlisting}[language=bash,caption=GRASS GIS code for grouping the bands of the Landsat image using 'i.group',style=mystyle,label={lst03}]
+i.group group=L8_2013 subgroup=res_30m input=L8_2013_01,L8_2013_02,L8_2013_03,L8_2013_04,L8_2013_05,L8_2013_06,L8_2013_07
+ \end{lstlisting}
+
+This approach partitions the image using the embedded algorithm of discriminating the pixels on the images that represent various land cover types in target area using their spectral reflectances. We evaluated three images covering the region of the Lake Chad on the three years: 2013, 2017 and 2022. 
 
 %----------- subsection ----------->
 \subsection{Image classification}
 
 Two major approaches in processing satellite images include the unsupervised and supervised methods of classification. The main difference between these approaches reside in the way the images are processed as data and the discrimination of pixels on the image scene. While the first approach requires human-based supervision that might be prone to errors, the unsupervised classification is a machine-based method which is more objective and free of bias. In this study, we use the unsupervised classification method using maximal likelihood classifier. The 'i.group' module of the GRASS GIS was used for processing the structures of the spatial data and grouping them into classes using the k-means algorithm. The classification was performed using the maximal likelihood approach by the 'i.maxlik' GRASS GIS module, which classifies the cells on the images using their spectral reflectance. 
 
-The processing workflow for each image included clustering of images on each scene extracted from the original raster file, detection of clusters with centroids, assignment of pixels to these clusters based on individual spectral reflectance values and indicating their representative values by creating signature file. In such way, it detects lans cover classes for each image for a short-term sequence of images on 2013, 2018 and 2022. The land cover classes were identified dividing the image into repetitive  segments of vegetation patterns automatically using the maximum likelihood approach of the GRASS GIS. The 'i.maxlik' module of the GRASS GIS was used for automatic generation of land cover classes based on the minimal distance search algorithm that assigns pixels to the classes based on the distance between pixel's value and centroid of the tested class. In this procedure, it uses the signature file generated automatically by the 'i.cluster' module with indicated number of target classes. 
+The processing workflow for each image included clustering of images on each scene extracted from the original raster file, detection of clusters with centroids, assignment of pixels to these clusters based on individual spectral reflectance values and indicating their representative values by creating signature file. Technically the procedure was performed using the  code in Listing \ref{lst04}:
+
+ \begin{lstlisting}[language=bash,caption=GRASS GIS code for clustering the Landsat 8 OLI/TIRS image by k-means using 'i.cluster' module),style=mystyle,label={lst04}]
+i.cluster group=L8_2013 subgroup=res_30m \
+  signaturefile=cluster_L8_2013 \
+  classes=12 reportfile=rep_clust_L8_2013.txt --overwrite
+ \end{lstlisting}
+ 
+In such way, it detects lans cover classes for each image for a short-term sequence of images on 2013, 2018 and 2022. The land cover classes were identified dividing the image into repetitive  segments of vegetation patterns automatically using the maximum likelihood approach of the GRASS GIS. The 'i.maxlik' module of the GRASS GIS was used for automatic generation of land cover classes based on the minimal distance search algorithm that assigns pixels to the classes based on the distance between pixel's value and centroid of the tested class. In this procedure, it uses the signature file generated automatically by the 'i.cluster' module with indicated number of target classes. 
 
 Regular intervals of the land cover classes in the Lake Chad region are represented in Figures \ref{fig05}, \ref{fig06} and \ref{fig07} showing landscape patterns for 2013, 2018 and 2022, respectively. Identifying of vegetation patterns and wetlands around the flooded area of the lake was done for target years using the detected land cover classes interpreted by the FAO classification available for Lake Chad region. Annotating the land cover classes was performed using signature file by identifying the breaks of intervals between the target classes using the difference in the spectral reflectance values of the pixels (cells on the Landsat image). Similar classes (e.g., three types of savannah) were grouped based on the original resolution of the images (30 m) which enabled to identify vegetation patches with size larger that this size. In this way, the classes were grouped and located closely to the patches of landscapes with similar spectral reflectance values in the original Landsat images. The algorithm performed automatic clustering and classification of each image in less than 2 seconds and processed raster files for the years 2013, 2018 and 2022 using the described methods.
 
